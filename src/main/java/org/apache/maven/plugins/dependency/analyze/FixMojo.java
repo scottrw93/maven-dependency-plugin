@@ -189,7 +189,12 @@ public class FixMojo
     List<Dependency> nonTestDependencies = consecutiveNonTestDeps( localDependencies );
 
     final int backupTestIndex;
-    if ( testDependencies.isEmpty() )
+    if ( testDependencies.isEmpty() && nonTestDependencies.isEmpty() )
+    {
+      Dependency lastDep = sortByLineNumberDescending( localDependencies ).get( 0 );
+      backupTestIndex = lineIndexAfter( lastDep, pomLines );
+    }
+    else if ( testDependencies.isEmpty() )
     {
       Dependency lastDep = sortByLineNumberDescending( nonTestDependencies ).get( 0 );
       backupTestIndex = lineIndexAfter( lastDep, pomLines );
@@ -201,7 +206,12 @@ public class FixMojo
     }
 
     final int backupNonTestIndex;
-    if ( nonTestDependencies.isEmpty() )
+    if ( testDependencies.isEmpty() && nonTestDependencies.isEmpty() )
+    {
+      Dependency firstDep = sortByLineNumberAscending( localDependencies ).get( 0 );
+      backupNonTestIndex = lineIndexAfter( firstDep, pomLines );
+    }
+    else if ( nonTestDependencies.isEmpty() )
     {
       Dependency firstTestDep = sortByLineNumberAscending( testDependencies ).get( 0 );
       backupNonTestIndex = startIndex( firstTestDep );
