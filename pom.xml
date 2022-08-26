@@ -329,6 +329,15 @@ under the License.
           <artifactId>maven-plugin-plugin</artifactId>
           <version>3.5</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <gpgArguments>
+            </gpgArguments>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -363,15 +372,6 @@ under the License.
           <systemPropertyVariables>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>3.0.1</version>
-        <configuration>
-          <gpgArguments>
-          </gpgArguments>
         </configuration>
       </plugin>
     </plugins>
