@@ -333,7 +333,7 @@ under the License.
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
           <version>3.0.1</version>
-          <configuration>
+          <configuration combine.self="override">
             <gpgArguments>
             </gpgArguments>
           </configuration>
