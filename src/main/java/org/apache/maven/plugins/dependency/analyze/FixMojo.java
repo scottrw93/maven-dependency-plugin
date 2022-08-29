@@ -268,6 +268,11 @@ public class FixMojo
 
         insertDependency( addition, insertIndex, pomLines );
       }
+
+      if ( inserted )
+      {
+        existing = rebuildModel( pomLines ).getDependencies();
+      }
     }
   }
 
