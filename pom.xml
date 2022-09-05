@@ -309,6 +309,7 @@ under the License.
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
           <configuration>
+            <skip>true</skip>
             <excludes combine.children="append">
               <!--
                 These files contain results for integration tests which can't contain license header
@@ -327,6 +328,15 @@ under the License.
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
           <version>3.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration combine.self="override">
+            <gpgArguments>
+            </gpgArguments>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
