@@ -518,10 +518,14 @@ public class FixMojo
       @Override
       public int compare( Artifact artifact1, Artifact artifact2 )
       {
-        String key1 = artifact1.getDependencyConflictId();
-        String key2 = artifact2.getDependencyConflictId();
+        // sort by groupId then artifactId
+        int groupIdCompare = artifact1.getGroupId().compareTo( artifact2.getGroupId() );
+        if ( groupIdCompare == 0 )
+        {
+          return -1 * artifact1.getArtifactId().compareTo( artifact2.getGroupId() );
+        }
 
-        return key1.compareTo( key2 ) * -1;
+        return -1 * groupIdCompare;
       }
     };
 
